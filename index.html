@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseball Scorecard - MoonlightGraham</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Baseball Scorecard</h1>
+        <div class="header">
+            <label>Notes: <input type="text" id="notes"></label>
+            <label>Date: <input type="date" id="date"></label>
+            <label>Visitor: <input type="text" id="visitor"></label>
+            <label>Score: <input type="text" id="score"></label>
+            <label>Home: <input type="text" id="home"></label>
+        </div>
+
+        <div class="game-notes">
+            <h3>Game Notes</h3>
+            <textarea id="gameNotes" rows="10"></textarea>
+        </div>
+
+        <table class="lineup-grid">
+            <thead>
+                <tr>
+                    <th>Line Up</th>
+                    <th>Pos</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>Extra</th>
+                </tr>
+            </thead>
+            <tbody id="lineupBody">
+                <!-- Dynamic rows will be added via JavaScript -->
+            </tbody>
+        </table>
+
+        <div class="team-stats">
+            <h3>Team Stats</h3>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Runs</th>
+                    <th>Hits</th>
+                    <th>Errors</th>
+                </tr>
+                <tr>
+                    <td>Visitor</td>
+                    <td><input type="number" id="visitorRuns" min="0"></td>
+                    <td><input type="number" id="visitorHits" min="0"></td>
+                    <td><input type="number" id="visitorErrors" min="0"></td>
+                </tr>
+                <tr>
+                    <td>Home</td>
+                    <td><input type="number" id="homeRuns" min="0"></td>
+                    <td><input type="number" id="homeHits" min="0"></td>
+                    <td><input type="number" id="homeErrors" min="0"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="pitchers-stats">
+            <h3>Pitchers' Stats</h3>
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>W/L/S</th>
+                    <th>IP</th>
+                    <th>H</th>
+                    <th>R</th>
+                    <th>ER</th>
+                    <th>BB</th>
+                    <th>SO</th>
+                    <th>HB</th>
+                    <th>BK</th>
+                    <th>WP</th>
+                    <th>TBF</th>
+                </tr>
+                <tr>
+                    <td><input type="text" id="pitcherNum1"></td>
+                    <td><input type="text" id="pitcherWLS1"></td>
+                    <td><input type="number" id="pitcherIP1" min="0" step="0.1"></td>
+                    <td><input type="number" id="pitcherH1" min="0"></td>
+                    <td><input type="number" id="pitcherR1" min="0"></td>
+                    <td><input type="number" id="pitcherER1" min="0"></td>
+                    <td><input type="number" id="pitcherBB1" min="0"></td>
+                    <td><input type="number" id="pitcherSO1" min="0"></td>
+                    <td><input type="number" id="pitcherHB1" min="0"></td>
+                    <td><input type="number" id="pitcherBK1" min="0"></td>
+                    <td><input type="number" id="pitcherWP1" min="0"></td>
+                    <td><input type="number" id="pitcherTBF1" min="0"></td>
+                </tr>
+                <!-- Add more rows dynamically if needed -->
+            </table>
+        </div>
+
+        <div class="catchers-stats">
+            <h3>Catchers' Stats</h3>
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>PB</th>
+                </tr>
+                <tr>
+                    <td><input type="text" id="catcherNum1"></td>
+                    <td><input type="number" id="catcherPB1" min="0"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="final-score">
+            <h3>Final Score</h3>
+            <textarea id="finalScoreNotes" rows="2"></textarea>
+        </div>
+
+        <button onclick="addLineupRow()">Add Player</button>
+        <button onclick="exportToPDF()">Export as PDF</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
